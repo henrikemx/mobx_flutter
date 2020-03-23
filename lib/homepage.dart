@@ -15,25 +15,21 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            TextField(
+              decoration: InputDecoration(labelText: 'Nome'),
+              onChanged: controller.mudarNome,
             ),
-            // escopo de uma reação: vem dentro do pacote mobx
+            SizedBox(height: 20),
+            TextField(
+              decoration: InputDecoration(labelText: 'SobreNome'),
+              onChanged: controller.mudarSobreNome,
+            ),
+            SizedBox(height: 20),
             Observer(builder: (_) {
-              return Text(
-                '${controller.counter}',
-                style: Theme.of(context).textTheme.display1,
-              );
+              return Text('${controller.nome} ${controller.sobrenome}');
             }),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          controller.increment();
-        },
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
